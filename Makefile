@@ -4,6 +4,7 @@ SOURCES := $(wildcard src/*.go)
 
 # Build for the current platform
 build:
+	mkdir -p $(dir $(BINARY))
 	go build -o $(BINARY) $(SOURCES)
 
 # Build for Linux
