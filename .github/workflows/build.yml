@@ -2,29 +2,24 @@ name: Build
 
 on:
   push:
-    branches:
-      - main
   pull_request:
-    branches:
-      - main
-      - dev
 
 jobs:
   build:
-    name: Demo Server
+    name: Build Server
     runs-on: ubuntu-latest
 
     steps:
-    - name: Clone repository
+    - name: Checkout Repository
       uses: actions/checkout@v6
 
-    - name: Set up Go
+    - name: Set Up Go
       uses: actions/setup-go@v6
       with:
         go-version-file: 'go.mod'
         cache-dependency-path: 'go.sum'
 
-    - name: Get dependencies
+    - name: Get Dependencies
       run: go get -v ...
 
     - name: Build
