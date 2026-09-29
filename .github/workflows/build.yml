@@ -17,10 +17,19 @@ jobs:
       uses: actions/setup-go@v6
       with:
         go-version-file: 'go.mod'
+        cache: true
         cache-dependency-path: 'go.sum'
 
     - name: Get Dependencies
       run: go mod download
 
     - name: Build
-      run: go build -v src/*.go
+      run: |
+        mkdir -p bin
+        go build -v -o bin/main ./src
+
+    - name: Upload Build
+      uses: actions/upload-artifact@v5
+      with:
+        name: fake-mc-server
+        path: bin/main
