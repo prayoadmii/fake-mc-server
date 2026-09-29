@@ -20,7 +20,7 @@ jobs:
         cache-dependency-path: 'go.sum'
 
     - name: Get Dependencies
-      run: go get -v ...
+      run: go mod download
 
     - name: Build
       run: go build -v src/*.go
